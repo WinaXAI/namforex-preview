@@ -1,0 +1,1236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NAMFOREX | WE ARE TRADERS</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Montserrat:wght@800;900&display=swap" rel="stylesheet">
+    <style>
+        /* ====== RESET & BASE ====== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --black: #0a0a0a;
+            --dark-gray: #111111;
+            --charcoal: #1a1a1a;
+            --green: #00ff88;
+            --green-dark: #00cc6d;
+            --red: #ff3366;
+            --gold: #ffd700;
+            --white: #ffffff;
+            --light-gray: #f0f0f0;
+            --gray: #888888;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            --radius: 12px;
+            --container: 1200px;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--black);
+            color: var(--white);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            width: 100%;
+            max-width: var(--container);
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        section {
+            padding: 80px 0;
+        }
+
+        h1, h2, h3, h4 {
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+        }
+
+        h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 3.5rem;
+            background: linear-gradient(to right, var(--white), var(--green));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            letter-spacing: -0.5px;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        h2:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: var(--green);
+        }
+
+        h3 {
+            font-size: 1.8rem;
+            color: var(--green);
+        }
+
+        h4 {
+            font-size: 1.3rem;
+            color: var(--light-gray);
+        }
+
+        p {
+            margin-bottom: 1.5rem;
+            color: var(--light-gray);
+            font-weight: 300;
+        }
+
+        .highlight {
+            color: var(--green);
+            font-weight: 600;
+        }
+
+        .red-accent {
+            color: var(--red);
+            font-weight: 600;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 16px 32px;
+            background: linear-gradient(135deg, var(--green), var(--green-dark));
+            color: var(--black);
+            font-weight: 700;
+            text-decoration: none;
+            border-radius: 8px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            font-size: 0.9rem;
+            box-shadow: 0 5px 15px rgba(0, 255, 136, 0.2);
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0, 255, 136, 0.3);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--green);
+            border: 2px solid var(--green);
+            box-shadow: none;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(0, 255, 136, 0.1);
+        }
+
+        /* ====== CUSTOM LOGO DESIGN ====== */
+        .logo {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 900;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            letter-spacing: 1px;
+            transition: var(--transition);
+            text-transform: uppercase;
+        }
+
+        .logo-text {
+            color: var(--charcoal);
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-text span {
+            color: var(--charcoal);
+        }
+
+        .logo-x {
+            position: relative;
+            margin: 0 2px;
+            width: 24px;
+            height: 24px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .logo-x:before,
+        .logo-x:after {
+            content: 'X';
+            position: absolute;
+            font-size: 1.8rem;
+            font-weight: 900;
+            color: var(--charcoal);
+            z-index: 2;
+        }
+
+        .logo-x:before {
+            clip-path: polygon(0 0, 100% 100%, 100% 0);
+            background: linear-gradient(135deg, transparent 50%, var(--green) 50%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .logo-x:after {
+            clip-path: polygon(0 0, 100% 100%, 0 100%);
+            background: linear-gradient(45deg, transparent 50%, var(--red) 50%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Header logo - white for contrast */
+        header .logo-text,
+        header .logo-text span {
+            color: var(--white);
+        }
+
+        header .logo-x:before,
+        header .logo-x:after {
+            color: var(--white);
+        }
+
+        .logo:hover {
+            filter: drop-shadow(0 0 8px rgba(0, 255, 136, 0.3));
+        }
+
+        /* ====== HEADER & HERO ====== */
+        header {
+            padding: 25px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(0, 255, 136, 0.1);
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 40px;
+        }
+
+        .nav-links a {
+            color: var(--light-gray);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--green);
+        }
+
+        .nav-links a:after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--green);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover:after {
+            width: 100%;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--white);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        .hero {
+            padding-top: 180px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 30% 50%, rgba(0, 255, 136, 0.1) 0%, transparent 50%);
+            z-index: -1;
+        }
+
+        .hero-tagline {
+            font-size: 1.2rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--green);
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .hero-subtitle {
+            font-size: 1.3rem;
+            color: var(--gray);
+            max-width: 700px;
+            margin: 0 auto 3rem;
+        }
+
+        /* ====== ABOUT SECTION ====== */
+        .about-section {
+            position: relative;
+        }
+
+        .about-card {
+            background: var(--dark-gray);
+            border-radius: var(--radius);
+            padding: 60px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            border-left: 4px solid var(--green);
+            transition: var(--transition);
+            opacity: 0;
+            transform: translateY(40px);
+        }
+
+        .about-card.animated {
+            animation: fadeInUp 0.8s forwards;
+        }
+
+        .about-card:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 150px;
+            height: 150px;
+            border-top: 2px solid var(--red);
+            border-right: 2px solid var(--red);
+            border-top-right-radius: var(--radius);
+        }
+
+        .about-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+        }
+
+        .founder-quote {
+            margin-top: 30px;
+            padding: 25px;
+            background: rgba(0, 255, 136, 0.05);
+            border-radius: 8px;
+            border-left: 3px solid var(--red);
+            font-style: italic;
+            position: relative;
+        }
+
+        .founder-quote:before {
+            content: '"';
+            position: absolute;
+            top: -20px;
+            left: 20px;
+            font-size: 4rem;
+            color: var(--green);
+            opacity: 0.3;
+            font-family: serif;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ====== SERVICES SECTION ====== */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .service-card {
+            background: var(--dark-gray);
+            border-radius: var(--radius);
+            padding: 40px;
+            text-align: center;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--green);
+            box-shadow: 0 15px 40px rgba(0, 255, 136, 0.15);
+        }
+
+        .service-card.featured {
+            border: 2px solid var(--gold);
+            transform: scale(1.05);
+        }
+
+        .service-card.featured:before {
+            content: 'BEST OFFER';
+            position: absolute;
+            top: 20px;
+            right: -30px;
+            background: var(--gold);
+            color: var(--black);
+            padding: 5px 30px;
+            transform: rotate(45deg);
+            font-weight: 800;
+            font-size: 0.8rem;
+            letter-spacing: 1px;
+        }
+
+        .price {
+            margin: 25px 0;
+        }
+
+        .old-price {
+            font-size: 1.2rem;
+            color: var(--gray);
+            text-decoration: line-through;
+            margin-bottom: 5px;
+        }
+
+        .new-price {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--green);
+        }
+
+        .service-features {
+            list-style: none;
+            text-align: left;
+            margin: 25px 0;
+        }
+
+        .service-features li {
+            padding: 8px 0;
+            color: var(--light-gray);
+            position: relative;
+            padding-left: 25px;
+        }
+
+        .service-features li:before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--green);
+            font-weight: bold;
+        }
+
+        /* ====== WHY CHOOSE ====== */
+        .reasons-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .reason-card {
+            background: rgba(255, 255, 255, 0.03);
+            padding: 40px 30px;
+            border-radius: var(--radius);
+            text-align: center;
+            transition: var(--transition);
+            border-bottom: 3px solid transparent;
+        }
+
+        .reason-card:hover {
+            background: rgba(0, 255, 136, 0.05);
+            border-bottom-color: var(--green);
+            transform: translateY(-5px);
+        }
+
+        .reason-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: var(--green);
+        }
+
+        /* ====== PAYMENT SECTION ====== */
+        .payment-methods {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin: 40px 0;
+        }
+
+        .payment-method {
+            background: rgba(255, 255, 255, 0.03);
+            padding: 25px;
+            border-radius: 8px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: var(--transition);
+        }
+
+        .payment-method:hover {
+            border-color: var(--green);
+            background: rgba(0, 255, 136, 0.05);
+        }
+
+        .payment-method h4 {
+            color: var(--green);
+            margin-bottom: 15px;
+        }
+
+        .payment-details {
+            font-family: 'Courier New', monospace;
+            background: rgba(0, 0, 0, 0.3);
+            padding: 12px;
+            border-radius: 6px;
+            word-break: break-all;
+            font-size: 0.9rem;
+            color: var(--light-gray);
+            margin-top: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .instructions {
+            background: rgba(255, 51, 102, 0.05);
+            padding: 25px;
+            border-radius: var(--radius);
+            margin-top: 40px;
+            border: 1px solid rgba(255, 51, 102, 0.2);
+        }
+
+        /* ====== CONTACT SECTION ====== */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 50px;
+            margin-top: 50px;
+        }
+
+        .instagram-handle {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: linear-gradient(45deg, #405DE6, #E1306C, #FFDC80);
+            padding: 16px 28px;
+            border-radius: 50px;
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 15px;
+            transition: var(--transition);
+        }
+
+        .instagram-handle:hover {
+            transform: scale(1.05);
+            filter: brightness(1.1);
+        }
+
+        .whatsapp-cta {
+            background: #25D366;
+            color: white;
+            padding: 25px;
+            border-radius: var(--radius);
+            text-align: center;
+            margin-top: 30px;
+            transition: var(--transition);
+        }
+
+        .whatsapp-cta:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(37, 211, 102, 0.3);
+        }
+
+        .whatsapp-cta a {
+            color: white;
+            font-weight: 700;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 10px;
+            font-size: 1.3rem;
+        }
+
+        /* ====== COLLAPSIBLE WEBSITE PACKAGES SECTION ====== */
+        .packages-section {
+            background: var(--dark-gray);
+            border-radius: var(--radius);
+            margin: 40px 0;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: var(--transition);
+        }
+
+        .packages-header {
+            padding: 25px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            background: rgba(0, 0, 0, 0.3);
+            border-bottom: 1px solid transparent;
+        }
+
+        .packages-header h3 {
+            color: var(--gray);
+            font-size: 1.4rem;
+            margin: 0;
+        }
+
+        .packages-toggle {
+            background: var(--charcoal);
+            color: var(--gray);
+            border: 1px solid var(--gray);
+            padding: 10px 20px;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .packages-toggle:hover {
+            border-color: var(--green);
+            color: var(--green);
+        }
+
+        .packages-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease-out, padding 0.3s ease-out;
+            padding: 0 30px;
+        }
+
+        .packages-content.expanded {
+            max-height: 2000px;
+            padding: 30px;
+        }
+
+        .packages-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin: 30px 0;
+        }
+
+        .package-card {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: var(--radius);
+            padding: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .package-card:hover {
+            border-color: var(--green);
+            transform: translateY(-5px);
+        }
+
+        .package-card.popular {
+            border-color: var(--gold);
+        }
+
+        .package-card.popular:before {
+            content: 'Most Popular';
+            position: absolute;
+            top: 15px;
+            right: -10px;
+            background: var(--gold);
+            color: var(--black);
+            padding: 5px 15px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            border-radius: 4px;
+        }
+
+        .package-price {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--green);
+            margin: 15px 0;
+        }
+
+        .package-features {
+            list-style: none;
+            margin: 20px 0;
+        }
+
+        .package-features li {
+            padding: 8px 0;
+            color: var(--light-gray);
+            position: relative;
+            padding-left: 25px;
+        }
+
+        .package-features li:before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: var(--green);
+            font-size: 1.2rem;
+        }
+
+        .package-note {
+            background: rgba(0, 255, 136, 0.05);
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 30px;
+            border-left: 3px solid var(--green);
+            font-size: 0.9rem;
+        }
+
+        /* ====== FOOTER ====== */
+        footer {
+            background: var(--dark-gray);
+            padding: 50px 0 30px;
+            text-align: center;
+            border-top: 1px solid rgba(0, 255, 136, 0.1);
+            margin-top: 80px;
+        }
+
+        .footer-logo {
+            display: inline-flex;
+            justify-content: center;
+            margin-bottom: 30px;
+        }
+
+        .footer-logo .logo-text,
+        .footer-logo .logo-text span {
+            color: var(--charcoal);
+        }
+
+        .footer-tagline {
+            font-size: 1.1rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--gray);
+            margin-bottom: 30px;
+            font-weight: 600;
+        }
+
+        .copyright {
+            color: var(--gray);
+            font-size: 0.9rem;
+            margin-top: 30px;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        /* ====== RESPONSIVE DESIGN ====== */
+        @media (max-width: 992px) {
+            h1 { font-size: 2.8rem; }
+            h2 { font-size: 2.2rem; }
+            .service-card.featured { transform: scale(1); }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            .mobile-menu-btn {
+                display: block;
+            }
+            .header-container {
+                padding: 0 20px;
+            }
+            .hero {
+                padding-top: 150px;
+            }
+            h1 { font-size: 2.3rem; }
+            h2 { font-size: 1.8rem; }
+            section { padding: 60px 0; }
+            .about-card, .service-card { padding: 30px; }
+            .contact-grid { gap: 30px; }
+            .logo { font-size: 1.5rem; }
+            .packages-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero-tagline { font-size: 1rem; letter-spacing: 2px; }
+            .hero-subtitle { font-size: 1.1rem; }
+            .services-grid { grid-template-columns: 1fr; }
+            .payment-methods { grid-template-columns: 1fr; }
+            .packages-header {
+                flex-direction: column;
+                gap: 15px;
+                text-align: center;
+            }
+            .package-card.popular:before {
+                position: relative;
+                top: 0;
+                right: 0;
+                display: inline-block;
+                margin-bottom: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header with Custom Logo -->
+    <header>
+        <div class="container header-container">
+            <a href="#" class="logo">
+                <div class="logo-text">
+                    <span>NAM</span>
+                    <div class="logo-x"></div>
+                    <span>FOREX</span>
+                </div>
+            </a>
+            <nav class="nav-links">
+                <a href="#about">About</a>
+                <a href="#services">Services</a>
+                <a href="#why">Why Choose Us</a>
+                <a href="#payment">How to Pay</a>
+                <a href="#contact">Contact</a>
+            </nav>
+            <button class="mobile-menu-btn">☰</button>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-tagline">WE ARE TRADERS</div>
+            <h1>MASTER THE MARKETS WITH <span class="red-accent">DISCIPLINE</span></h1>
+            <p class="hero-subtitle">Professional Forex education and premium trading signals backed by nearly a decade of market experience. Transform your trading psychology and achieve consistent results.</p>
+            <a href="#services" class="btn">VIEW PREMIUM OFFERS</a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about-section">
+        <div class="container">
+            <h2>THE NAMFOREX PHILOSOPHY</h2>
+            <div class="about-card" id="aboutCard">
+                <p><span class="highlight">NAMFOREX</span> was founded with one clear mission: to transform ordinary individuals into disciplined and confident traders. Established by <span class="highlight">Shinkanda Thomas</span>, a university graduate, entrepreneur and experienced Forex trader with <span class="red-accent">nearly a decade</span> of market experience.</p>
+                <p>This is not a shortcut-driven brand. Every lesson, signal and mentorship session is backed by years of <span class="highlight">live market exposure</span> and <span class="highlight">structured learning</span>. The focus is <span class="red-accent">consistency</span>, <span class="red-accent">psychology</span> and <span class="highlight">long-term growth</span>.</p>
+                <p>NAMFOREX is built on <span class="highlight">real market experience</span>, refined strategies and <span class="highlight">professional execution</span>. We prioritize risk management and disciplined decision-making over emotional trading.</p>
+                <div class="founder-quote">
+                    <p>"WE ARE TRADERS" represents discipline, mastery and professionalism in the Forex market. It's a mindset that separates successful traders from the rest.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services">
+        <div class="container">
+            <h2>PREMIUM TRADING SERVICES</h2>
+            <div class="services-grid">
+                <!-- Mentorship -->
+                <div class="service-card">
+                    <h3>Forex Mentorship</h3>
+                    <p>Structured education via personalized sessions</p>
+                    <div class="price">
+                        <div class="old-price">Normal: N$8,000</div>
+                        <div class="new-price">N$<span>3,500</span></div>
+                    </div>
+                    <ul class="service-features">
+                        <li>1-on-1 Zoom mentorship sessions</li>
+                        <li>Market analysis & strategy building</li>
+                        <li>Risk management mastery</li>
+                        <li>Psychology & discipline training</li>
+                        <li>Lifetime access to materials</li>
+                    </ul>
+                    <a href="#payment" class="btn btn-secondary">SELECT THIS OFFER</a>
+                </div>
+
+                <!-- Signals -->
+                <div class="service-card">
+                    <h3>VIP Forex Signals</h3>
+                    <p>Premium trading signals delivered directly</p>
+                    <div class="price">
+                        <div class="old-price">Normal: N$5,000</div>
+                        <div class="new-price">N$<span>2,500</span></div>
+                    </div>
+                    <ul class="service-features">
+                        <li>Real-time entry & exit signals</li>
+                        <li>Detailed analysis & rationale</li>
+                        <li>Risk-reward clearly defined</li>
+                        <li>24/7 priority support</li>
+                        <li>Lifetime access - no renewals</li>
+                    </ul>
+                    <a href="#payment" class="btn btn-secondary">SELECT THIS OFFER</a>
+                </div>
+
+                <!-- Combo -->
+                <div class="service-card featured">
+                    <h3>Complete Package</h3>
+                    <p>Mentorship + VIP Signals (Best Value)</p>
+                    <div class="price">
+                        <div class="old-price">Normal: N$13,000</div>
+                        <div class="new-price">N$<span>4,500</span></div>
+                    </div>
+                    <ul class="service-features">
+                        <li>Everything in both packages</li>
+                        <li>Save N$8,500 (65% discount)</li>
+                        <li>Priority support & direct access</li>
+                        <li>Custom trading plan development</li>
+                        <li>Monthly performance reviews</li>
+                    </ul>
+                    <a href="#payment" class="btn">GET BEST OFFER</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Section -->
+    <section id="why">
+        <div class="container">
+            <h2>WHY TRADERS CHOOSE NAMFOREX</h2>
+            <div class="reasons-grid">
+                <div class="reason-card">
+                    <div class="reason-icon">🎓</div>
+                    <h3>Decade of Experience</h3>
+                    <p>Nearly 10 years of live market trading across all market conditions, providing real-world, tested insights.</p>
+                </div>
+                <div class="reason-card">
+                    <div class="reason-icon">⚖️</div>
+                    <h3>Discipline-First Approach</h3>
+                    <p>We prioritize trading psychology and risk management over hype and emotional decision-making.</p>
+                </div>
+                <div class="reason-card">
+                    <div class="reason-icon">📊</div>
+                    <h3>Structured Learning</h3>
+                    <p>Clear progression from fundamentals to advanced strategies, avoiding information overload.</p>
+                </div>
+                <div class="reason-card">
+                    <div class="reason-icon">🛡️</div>
+                    <h3>Risk Management Focus</h3>
+                    <p>Protecting capital is our first priority. Learn to manage risk intelligently and trade sustainably.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Payment Section -->
+    <section id="payment">
+        <div class="container">
+            <h2>HOW TO GET STARTED</h2>
+            <div class="payment-methods">
+                <div class="payment-method">
+                    <h4>🇳🇦 FNB Namibia</h4>
+                    <p>Pay2Cell Transfer</p>
+                    <div class="payment-details">0811234567</div>
+                </div>
+                <div class="payment-method">
+                    <h4>₿ Bitcoin (BTC)</h4>
+                    <p>Bitcoin Network</p>
+                    <div class="payment-details">bc1qdemoaddressxyz987654321</div>
+                </div>
+                <div class="payment-method">
+                    <h4>💎 USDT (TRC20)</h4>
+                    <p>Tron Network</p>
+                    <div class="payment-details">TXdemoUSDTaddress123456789</div>
+                </div>
+            </div>
+            
+            <div class="instructions">
+                <h3>📋 Payment Instructions:</h3>
+                <ol style="padding-left: 20px; margin: 15px 0;">
+                    <li style="margin-bottom: 10px;">Select your preferred service above</li>
+                    <li style="margin-bottom: 10px;">Make payment using any method shown</li>
+                    <li style="margin-bottom: 10px;"><span class="red-accent">Take a clear screenshot</span> of payment confirmation</li>
+                    <li style="margin-bottom: 10px;">Send the screenshot to Admin on WhatsApp</li>
+                    <li>Access will be granted within 24 hours after verification</li>
+                </ol>
+                <p class="highlight">Ensure payment details are visible in your screenshot for quick verification.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="container">
+            <h2>CONNECT WITH US</h2>
+            <div class="contact-grid">
+                <div>
+                    <h3>Follow for Insights</h3>
+                    <p>Follow our Instagram for regular market insights, trading psychology tips, and updates from the NAMFOREX community.</p>
+                    <a href="https://instagram.com/namforex_official" target="_blank" class="instagram-handle">
+                        <span>📸</span> @namforex_official
+                    </a>
+                </div>
+                <div>
+                    <h3>Need Assistance?</h3>
+                    <p>Have questions about our services or need help with payment? Contact our admin directly on WhatsApp for quick responses.</p>
+                    <div class="whatsapp-cta">
+                        <p>💬 Message us on WhatsApp</p>
+                        <a href="https://wa.me/264811234567" target="_blank">+264 81 123 4567</a>
+                        <p style="margin-top: 15px; font-size: 0.9rem;">Available Monday - Friday, 9AM - 5PM</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Collapsible Website Packages Section -->
+    <section style="padding: 40px 0;">
+        <div class="container">
+            <div class="packages-section">
+                <div class="packages-header" id="packagesHeader">
+                    <h3>🌐 Website Activation & Management Packages</h3>
+                    <button class="packages-toggle" id="packagesToggle">View Website Packages</button>
+                </div>
+                <div class="packages-content" id="packagesContent">
+                    <p style="color: var(--gray); margin-bottom: 25px; text-align: center;">
+                        Professional website solutions for businesses. Setup fees are once-off. Monthly service keeps your website and emails active.
+                    </p>
+                    
+                    <div class="packages-grid">
+                        <!-- Basic Website -->
+                        <div class="package-card">
+                            <h4>Basic Website Setup</h4>
+                            <div class="package-price">N$2,500</div>
+                            <p style="color: var(--gray); font-size: 0.9rem;">Once-off setup fee</p>
+                            <ul class="package-features">
+                                <li>1-page professional website</li>
+                                <li>Mobile responsive design</li>
+                                <li>Basic customization</li>
+                                <li>Go-live setup</li>
+                                <li>Basic contact form</li>
+                            </ul>
+                        </div>
+
+                        <!-- Professional Website -->
+                        <div class="package-card popular">
+                            <h4>Professional Website Setup</h4>
+                            <div class="package-price">N$4,500</div>
+                            <p style="color: var(--gray); font-size: 0.9rem;">Once-off setup fee</p>
+                            <ul class="package-features">
+                                <li>Everything in Basic</li>
+                                <li>Advanced design polish</li>
+                                <li>1 business email setup</li>
+                                <li>Premium animations</li>
+                                <li>Social media integration</li>
+                            </ul>
+                        </div>
+
+                        <!-- Premium Website -->
+                        <div class="package-card">
+                            <h4>Premium Website Setup</h4>
+                            <div class="package-price">N$6,500</div>
+                            <p style="color: var(--gray); font-size: 0.9rem;">Once-off setup fee</p>
+                            <ul class="package-features">
+                                <li>Everything in Professional</li>
+                                <li>Advanced animations & UI polish</li>
+                                <li>SEO-ready structure</li>
+                                <li>Up to 3 business emails</li>
+                                <li>Performance optimization</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Monthly Services -->
+                    <div style="margin-top: 40px;">
+                        <h3 style="text-align: center; margin-bottom: 30px;">📅 Ongoing Services</h3>
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 25px;">
+                            <div class="package-card">
+                                <h4>Monthly Website Service</h4>
+                                <div class="package-price">N$1,200<span style="font-size: 1rem; color: var(--gray);">/month</span></div>
+                                <p style="color: var(--red); font-size: 0.9rem; font-weight: 600;">Mandatory for all websites</p>
+                                <ul class="package-features">
+                                    <li>Website hosting & management</li>
+                                    <li>Security & uptime monitoring</li>
+                                    <li>Technical support</li>
+                                    <li>1 business email inbox</li>
+                                    <li>Regular backups</li>
+                                </ul>
+                            </div>
+
+                            <div class="package-card">
+                                <h4>Additional Business Emails</h4>
+                                <div class="package-price">N$350<span style="font-size: 1rem; color: var(--gray);">/month each</span></div>
+                                <p style="color: var(--gray); font-size: 0.9rem;">Add more professional emails</p>
+                                <ul class="package-features">
+                                    <li>Professional email address</li>
+                                    <li>Secure inbox</li>
+                                    <li>Spam protection</li>
+                                    <li>Webmail access</li>
+                                    <li>Mobile synchronization</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="package-note">
+                        <p><span class="highlight">Important Note:</span> Setup fees are once-off payments. The monthly service fee (N$1,200) is mandatory and keeps your website active, secure, and maintained. Without monthly service, websites are deactivated.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-logo">
+                <a href="#" class="logo">
+                    <div class="logo-text">
+                        <span>NAM</span>
+                        <div class="logo-x"></div>
+                        <span>FOREX</span>
+                    </div>
+                </a>
+            </div>
+            <div class="footer-tagline">WE ARE TRADERS</div>
+            <p style="max-width: 600px; margin: 0 auto 30px; color: var(--gray);">
+                Professional Forex education and trading signals. Founded by Shinkanda Thomas.
+            </p>
+            <p class="copyright">
+                © 2023 NAMFOREX. All rights reserved.<br>
+                Forex trading carries substantial risk. Past performance is not indicative of future results.<br>
+                <span style="color: var(--red); font-size: 0.8rem; margin-top: 10px; display: inline-block;">
+                    Demo website preview for presentation purposes.
+                </span>
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // About section animation on scroll
+        const aboutCard = document.getElementById('aboutCard');
+        const observerOptions = {
+            threshold: 0.2,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animated');
+                }
+            });
+        }, observerOptions);
+
+        if (aboutCard) observer.observe(aboutCard);
+
+        // Mobile menu toggle
+        document.querySelector('.mobile-menu-btn').addEventListener('click', function() {
+            const nav = document.querySelector('.nav-links');
+            nav.style.display = nav.style.display === 'flex' ? 'none' : 'flex';
+            if (nav.style.display === 'flex') {
+                nav.style.flexDirection = 'column';
+                nav.style.position = 'absolute';
+                nav.style.top = '100%';
+                nav.style.left = '0';
+                nav.style.width = '100%';
+                nav.style.background = 'rgba(10, 10, 10, 0.98)';
+                nav.style.padding = '30px 20px';
+                nav.style.gap = '25px';
+                nav.style.borderTop = '1px solid rgba(0, 255, 136, 0.1)';
+                nav.style.backdropFilter = 'blur(10px)';
+            }
+        });
+
+        // Collapsible packages section
+        const packagesToggle = document.getElementById('packagesToggle');
+        const packagesContent = document.getElementById('packagesContent');
+        const packagesHeader = document.getElementById('packagesHeader');
+
+        let packagesExpanded = false;
+
+        packagesToggle.addEventListener('click', function() {
+            packagesExpanded = !packagesExpanded;
+            
+            if (packagesExpanded) {
+                packagesContent.classList.add('expanded');
+                packagesToggle.textContent = 'Hide Packages';
+                packagesHeader.style.borderBottom = '1px solid rgba(255, 255, 255, 0.1)';
+                packagesHeader.style.background = 'rgba(0, 255, 136, 0.05)';
+            } else {
+                packagesContent.classList.remove('expanded');
+                packagesToggle.textContent = 'View Website Packages';
+                packagesHeader.style.borderBottom = '1px solid transparent';
+                packagesHeader.style.background = 'rgba(0, 0, 0, 0.3)';
+            }
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 100,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    const nav = document.querySelector('.nav-links');
+                    if (window.innerWidth <= 768 && nav.style.display === 'flex') {
+                        nav.style.display = 'none';
+                    }
+                }
+            });
+        });
+
+        // Add subtle background animation
+        const createBackgroundElements = () => {
+            const body = document.body;
+            for (let i = 0; i < 15; i++) {
+                const dot = document.createElement('div');
+                dot.style.position = 'fixed';
+                dot.style.width = Math.random() * 3 + 1 + 'px';
+                dot.style.height = dot.style.width;
+                dot.style.background = Math.random() > 0.5 ? 'var(--green)' : 'var(--red)';
+                dot.style.opacity = Math.random() * 0.1 + 0.05;
+                dot.style.left = Math.random() * 100 + '%';
+                dot.style.top = Math.random() * 100 + '%';
+                dot.style.pointerEvents = 'none';
+                dot.style.zIndex = '-1';
+                body.appendChild(dot);
+            }
+        };
+
+        createBackgroundElements();
+    </script>
+</body>
+</html>
